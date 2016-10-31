@@ -1,6 +1,6 @@
 package com.leeh.server;
 
-public class Servlet {
+public abstract class Servlet {
 	
 	public void server(Request request, Response response){
 		if (request.getMethod().equalsIgnoreCase(Request.REQUEST_METHOD_GET)) {
@@ -10,13 +10,7 @@ public class Servlet {
 		}
 	}
 	
-	public void doGet(Request request, Response response) {
-		String response_content = "<html><head><title>Test</title></head><body> ÄãºÃ"
-				+ request.getParameter("userName") + "</body></html>";
-		response.createContent(response_content);
-	}
+	public abstract void doGet(Request request, Response response);
 	
-	public void doPost(Request request, Response response){
-		doGet(request, response);
-	}
+	public abstract void doPost(Request request, Response response);
 }

@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Date;
 
-import com.leeh.Util.CloseUtil;
+import com.leeh.Utils.CloseUtil;
 
 public class Response {
 

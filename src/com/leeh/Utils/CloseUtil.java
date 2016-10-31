@@ -1,4 +1,4 @@
-package com.leeh.Util;
+package com.leeh.Utils;
 
 import java.io.Closeable;
 import java.io.IOException;

@@ -3,7 +3,7 @@ package com.leeh.server;
 import java.io.IOException;
 import java.net.Socket;
 
-import com.leeh.Util.CloseUtil;
+import com.leeh.Utils.CloseUtil;
 
 public class Dispatch implements Runnable {
 
@@ -24,13 +24,24 @@ public class Dispatch implements Runnable {
 
 	@Override
 	public void run() {
-		Servlet servlet = new Servlet();
-		servlet.server(request, response);
 		try {
-			response.pushClient(code);
+			System.out.println(request.toString());
+			System.out.println(request.getUrl());
+			Servlet servlet = WebApp.getServlet(request.getUrl());
+			if (servlet == null) {
+				code = 404;
+			}else{
+				servlet.server(request, response);
+				response.pushClient(code);
+			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			code = 500;
+		} catch (InstantiationException e) {
+			code = 404;
+		} catch (IllegalAccessException e) {
+			code = 404;
+		} catch (ClassNotFoundException e) {
+			code = 404;
 		}finally{
 			CloseUtil.closeSocket(client);
 		}

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import com.leeh.Util.CloseUtil;
+import com.leeh.Utils.CloseUtil;
 
 public class Request {
 	private final static String CRLF = "\r\n";

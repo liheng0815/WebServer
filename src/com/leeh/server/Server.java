@@ -22,13 +22,10 @@ public class Server {
 	}
 
 	private void receive() throws IOException {
-		int i = 0;
 		while (isRunning) {
 			Socket client = server.accept();
-			System.out.println(i + "============================");
 			Dispatch dispatch = new Dispatch(client);
 			new Thread(dispatch).start();
-			System.out.println(i++ + "============================");
 		}
 	}
 
